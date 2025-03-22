@@ -11,7 +11,20 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _nameController.dispose();
+
+    super.dispose();
+  }
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
-          key: formKey,
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -28,17 +41,27 @@ class _SignupScreenState extends State<SignupScreen> {
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 30),
-              const AuthField(hintText: 'Name'),
+              AuthField(
+                hintText: 'Name',
+                textEditingController: _nameController,
+              ),
               const SizedBox(height: 15),
-              const AuthField(hintText: 'Email ID'),
+              AuthField(
+                hintText: 'Email ID',
+                textEditingController: _emailController,
+              ),
               const SizedBox(height: 15),
-              const AuthField(hintText: 'Password'),
+              AuthField(
+                hintText: 'Password',
+                textEditingController: _passwordController,
+                isObscureText: true,
+              ),
               const SizedBox(height: 15),
               const AuthGradientButton(title: "Sign Up"),
               const SizedBox(height: 20),
               RichText(
                 text: TextSpan(
-                  text: 'Don\'t have an account? ',
+                  text: 'Already have an account? ',
                   style: Theme.of(context).textTheme.titleMedium,
                   children: [
                     TextSpan(

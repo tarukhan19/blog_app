@@ -57,7 +57,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 isObscureText: true,
               ),
               const SizedBox(height: 15),
-              const AuthGradientButton(title: "Sign Up"),
+              const AuthGradientButton(buttonText: "Sign Up"),
               const SizedBox(height: 20),
               RichText(
                 text: TextSpan(

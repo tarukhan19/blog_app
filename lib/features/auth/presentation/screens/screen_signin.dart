@@ -1,7 +1,9 @@
 import 'package:blog_app/features/auth/presentation/screens/screen_signup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/app_pallete.dart';
+import '../bloc/auth_bloc.dart';
 import '../widgets/auth_field.dart';
 import '../widgets/auth_gradient_button.dart';
 
@@ -54,7 +56,19 @@ class _SignInScreenState extends State<SignInScreen> {
                 isObscureText: true,
               ),
               const SizedBox(height: 15),
-              const AuthGradientButton(buttonText: "Sign In"),
+              AuthGradientButton(
+                buttonText: "Sign In",
+                onButtonPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<AuthBloc>().add(
+                      AuthSignIn(
+                        emailId: _emailController.text,
+                        password: _passwordController.text,
+                      ),
+                    );
+                  }
+                },
+              ),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {

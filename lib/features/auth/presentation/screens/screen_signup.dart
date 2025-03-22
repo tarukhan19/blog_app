@@ -1,8 +1,10 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
+import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/screens/screen_signin.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupScreen extends StatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => SignupScreen());
@@ -61,7 +63,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 isObscureText: true,
               ),
               const SizedBox(height: 15),
-              const AuthGradientButton(buttonText: "Sign Up"),
+              AuthGradientButton(
+                buttonText: "Sign Up",
+                onButtonPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<AuthBloc>().add(
+                      AuthSignUp(
+                        name: _nameController.text,
+                        emailId: _emailController.text,
+                        password: _passwordController.text,
+                      ),
+                    );
+                  }
+                },
+              ),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
@@ -74,7 +89,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     children: [
                       TextSpan(
                         text: 'Sign In',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        style: Theme.of(
+                          context,
+                        ).textTheme.titleMedium?.copyWith(
                           color: AppPallete.gradient2,
                           fontWeight: FontWeight.bold,
                         ),

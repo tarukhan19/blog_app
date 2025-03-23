@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'auth_event.dart';
-
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -16,27 +15,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     : _userSignUp = userSignUp,
       _userSignIn = userSignedIn,
       super(AuthInitial()) {
-    on<AuthSignUp>((event, emit) async {
-      emit(AuthLoading());
-      final signUpResponse = await _userSignUp(
-        UserSignUpParameters(
-          emailId: event.emailId,
-          password: event.password,
-          name: event.name,
-        ),
-      );
+    on<AuthEvent>((_, emit) => emit(AuthLoading()));
+    on<AuthSignUp>(_onAuthSignUp);
+    on<AuthSignIn>(_onAuthSignIn);
+  }
 
-      final signInResponse = await _userSignIn(
-        UserSignInParameters(emailId: event.emailId, password: event.password),
-      );
-      signUpResponse.fold(
-        (onFailure) => emit(AuthFailure(onFailure.message)),
-        (user) => emit(AuthSuccess(user)),
-      );
-      signInResponse.fold(
-        (onFailure) => emit(AuthFailure(onFailure.message)),
-        (user) => emit(AuthSuccess(user)),
-      );
-    });
+  void _onAuthSignUp(AuthSignUp event, Emitter<AuthState> emit) async {
+    final signUpResponse = await _userSignUp(
+      UserSignUpParameters(
+        emailId: event.emailId,
+        password: event.password,
+        name: event.name,
+      ),
+    );
+    signUpResponse.fold(
+      (onFailure) => emit(AuthFailure(onFailure.message)),
+      (user) => emit(AuthSuccess(user)),
+    );
+  }
+
+  void _onAuthSignIn(AuthSignIn event, Emitter<AuthState> emit) async {
+    final signInResponse = await _userSignIn(
+      UserSignInParameters(emailId: event.emailId, password: event.password),
+    );
+
+    signInResponse.fold(
+      (onFailure) => emit(AuthFailure(onFailure.message)),
+      (user) => emit(AuthSuccess(user)),
+    );
   }
 }

@@ -1,16 +1,16 @@
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:blog_app/features/auth/presentation/screens/screen_signin.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:blog_app/features/auth/presentation/widgets/loader.dart';
 import 'package:blog_app/features/auth/presentation/widgets/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:go_router/go_router.dart';
+import '../../../../config/route/route_constant.dart';
 import '../../../../config/theme/app_pallete.dart';
 
 class SignupScreen extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => SignupScreen());
+ // static route() => MaterialPageRoute(builder: (context) => SignupScreen());
 
   const SignupScreen({super.key});
 
@@ -97,7 +97,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, SignInScreen.route());
+                        context.pushNamed(RouteConstant.signIn);
+                        // Navigator.push(context, SignInScreen.route());
                       },
                       child: RichText(
                         text: TextSpan(

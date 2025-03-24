@@ -1,3 +1,4 @@
+import 'package:blog_app/config/route/route_constant.dart';
 import 'package:blog_app/features/auth/presentation/screens/screen_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +8,7 @@ import '../widgets/auth_field.dart';
 import '../widgets/auth_gradient_button.dart';
 import '../widgets/loader.dart';
 import '../widgets/show_snackbar.dart';
-
+import 'package:go_router/go_router.dart';
 /*
 ✅  GlobalKey in Flutter is a unique identifier that allows you to access, manipulate,
 and interact with a widget from outside its build context.
@@ -18,7 +19,7 @@ and interact with a widget from outside its build context.
 
  */
 class SignInScreen extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => SignInScreen());
+  // static route() => MaterialPageRoute(builder: (context) => SignInScreen());
 
   const SignInScreen({super.key});
 
@@ -102,7 +103,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, SignupScreen.route());
+                     // Navigator.push(context, SignupScreen.route());
+                      context.pushNamed(RouteConstant.signUp);
                     },
                     child: RichText(
                       text: TextSpan(

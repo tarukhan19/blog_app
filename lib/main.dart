@@ -1,3 +1,4 @@
+import 'package:blog_app/config/route/route.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/screens/screen_signin.dart';
 import 'package:blog_app/init_dependencies.dart';
@@ -38,11 +39,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: "Blogs",
       theme: AppTheme.darkThemeMode,
-      home: const SafeArea(child: SignInScreen()),
+      routeInformationProvider: AppRouter.router.routeInformationProvider,
+      routeInformationParser: AppRouter.router.routeInformationParser,
+      routerDelegate: AppRouter.router.routerDelegate,
     );
   }
 }

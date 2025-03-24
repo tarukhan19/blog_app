@@ -51,10 +51,5 @@ void _initAuth() {
     ..registerFactory(() => UserSignUp(serviceLocator()))
     ..registerFactory(() => UserSignIn(serviceLocator()))
     // bloc
-    ..registerLazySingleton(
-      () => AuthBloc(
-        userSignUp: serviceLocator(),
-        userSignedIn: serviceLocator(),
-      ),
-    );
+    ..registerLazySingleton(() => AuthBloc(serviceLocator(), serviceLocator()));
 }

@@ -20,7 +20,7 @@ It listens to authentication events (AuthEvent) and updates the UI based on auth
 
 Ensures that any authentication event first emits AuthLoading().
 ✅ on<AuthSignUp>(_onAuthSignUp);
-
+In Flutter BLoC, on<T>() is a method used to register event handlers inside a BLoC class.
 Calls _onAuthSignUp when the AuthSignUp event is triggered.
 ✅ on<AuthSignIn>(_onAuthSignIn);
 
@@ -48,10 +48,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserSignUp _userSignUp;
   final UserSignIn _userSignIn;
 
-  AuthBloc({required UserSignUp userSignUp, required UserSignIn userSignedIn})
-    : _userSignUp = userSignUp,
-      _userSignIn = userSignedIn,
-      super(AuthInitial()) {
+  AuthBloc(this._userSignUp, this._userSignIn) : super(AuthInitial()) {
     on<AuthEvent>((_, emit) => emit(AuthLoading()));
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthSignIn>(_onAuthSignIn);

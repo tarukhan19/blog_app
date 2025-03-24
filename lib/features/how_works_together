@@ -38,7 +38,7 @@ Object or entities should be open for extension but closed for modification
 we can create a new AuthRemoteDataImpl implementation instead of modifying existing code.
 ✅If you need another form of user storage (e.g., local DB), you can create a separate implementation for AuthRepository.
 
-📌 L - lisk of substitution
+📌 L - Liskov substitution
 Parents classes should be replaceable by their subclasses, that without altering the behaviour
 ✅ The data source also follows an interface (AuthRemoteData), so you can replace Supabase with
 another backend without changing the rest of the code

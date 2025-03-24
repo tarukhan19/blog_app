@@ -21,6 +21,10 @@ This is a cleaner way to write functions with a single statement.
 
 .. -> cascade operator(..) in Dart allows you to perform multiple operations on the same object
  without repeating its name.
+
+ A Service Locator is a design pattern used to manage dependencies efficiently.
+ In Flutter, we commonly use GetIt as a Service Locator to register and access
+ dependencies without passing them manually through constructors.
  */
 final serviceLocator = GetIt.instance;
 

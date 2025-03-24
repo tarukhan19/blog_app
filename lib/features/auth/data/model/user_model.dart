@@ -11,6 +11,9 @@ import 'package:blog_app/features/auth/domain/entity/user.dart';
 📌 fromJson -> defines a factory constructor named fromJson for a UserModel class.
 It is used to create a UserModel object from a Map<String, dynamic> (typically a JSON object).
 
+✅ factory constructor in Dart is a special type of constructor that does not always create a new instance of a class.
+Instead, it can return an existing instance, cache objects, or return a subclass instance.
+
 📌 object?.property
 If object is not null, it accesses property.
 If object is null, it returns null instead of throwing an error.

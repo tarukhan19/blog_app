@@ -1,0 +1,11 @@
+Presentation Layer 🖥️ (UI & State Management)
+📌 Purpose:
+
+Handles UI and user interactions.
+Uses BLoC (Business Logic Component) for state management.
+
+📌 Components:
+
+Widgets (UI)
+BLoC (State Management)
+Events & States

@@ -1,0 +1,12 @@
+Data Layer 🗄️ (Data Management)
+📌 Purpose:
+
+Fetches & stores data from APIs, Databases, or Local Storage.
+Converts raw data into usable business models.
+
+📌 Components:
+
+Repositories (Implementation) → Actual logic to fetch/store data.
+Data Sources → Handles API calls, local DB interactions.
+Models/DTOs → Converts raw data into structured format.
+

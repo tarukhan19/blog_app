@@ -1,0 +1,53 @@
+How It Works Together
+
+UI Layer (Presentation) → Sends user actions to BLoC.
+
+BLoC → Calls a Use Case (from Domain Layer).
+
+Use Case → Requests data from the Repository Interface.
+
+Repository Interface → Calls Data Layer to get the actual data.
+
+Data Layer → Fetches data from Supabase (or any other storage).
+
+Data Layer → Sends data back to the Use Case.
+
+Use Case → Returns data to BLoC.
+
+BLoC → Updates UI with new state.
+
+------------------ SOLID Principle --------------------
+
+📌 S - single responsibility
+Every class or function must have single responsibility to follow
+Each class should have only one reason to change.
+
+You have separated different concerns:
+
+✅ Entity (User) → Defines the user model.
+✅ Repository (AuthRepository) → Defines authentication operations.
+✅ Use Cases (UserSignIn, UserSignUp) → Implements business logic.
+✅ Data Source (AuthRemoteDataImpl) → Handles API calls via Supabase.
+✅ BLoC (AuthBloc) → Manages UI state based on authentication events.
+
+📌 O - open closed principal
+Object or entities should be open for extension but closed for modification
+
+✅ New features can be added without modifying existing classes:
+✅If you need to support another authentication method (e.g., Google Sign-In),
+we can create a new AuthRemoteDataImpl implementation instead of modifying existing code.
+✅If you need another form of user storage (e.g., local DB), you can create a separate implementation for AuthRepository.
+
+📌 L - lisk of substitution
+Parents classes should be replaceable by their subclasses, that without altering the behaviour
+✅ The data source also follows an interface (AuthRemoteData), so you can replace Supabase with
+another backend without changing the rest of the code
+
+📌 I - interface segregation
+Classes should not be forced to implement the function of an interface which are not required
+
+📌 D - dependency inversion
+We should depend on abstraction not on concretion
+✅ High-level modules should not depend on low-level modules. Both should depend on abstractions.
+✅ AuthBloc does not directly depend on AuthRepositoryImpl but on UserSignUp and UserSignIn
+(which in turn depend on AuthRepository).

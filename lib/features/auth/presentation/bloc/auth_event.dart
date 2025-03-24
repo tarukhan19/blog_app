@@ -1,5 +1,13 @@
 part of 'auth_bloc.dart';
+/*
+AuthEvent class represents different authentication-related user actions (events) in the BLoC
+ pattern. Events define what triggers the authentication process, such as signing up or logging in.
 
+🛠 Breakdown of AuthEvent
+1️⃣ AuthSignUp → Triggered when a user signs up with name, email, and password.
+2️⃣ AuthSignIn → Triggered when a user logs in with email and password.
+
+ */
 @immutable
 sealed class AuthEvent {}
 

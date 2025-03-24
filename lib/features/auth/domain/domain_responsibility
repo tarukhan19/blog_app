@@ -1,0 +1,12 @@
+Domain Layer 🧠 (Business Logic)
+📌 Purpose:
+
+The heart of the app.
+Contains business rules, independent of Flutter or any framework.
+Defines Use Cases (Interactors) that execute specific app logic.
+
+📌 Components:
+
+Entities → Core business objects (e.g., User).
+Use Cases → Contains business logic (e.g., LoginUserUseCase).
+Repositories (Abstract) → Interfaces defining data access methods.

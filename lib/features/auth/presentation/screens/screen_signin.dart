@@ -8,6 +8,15 @@ import '../widgets/auth_gradient_button.dart';
 import '../widgets/loader.dart';
 import '../widgets/show_snackbar.dart';
 
+/*
+✅  GlobalKey in Flutter is a unique identifier that allows you to access, manipulate,
+and interact with a widget from outside its build context.
+
+✅ context.read<AuthBloc>() -> Gets the BLoC instance without listening to state changes.
+✅ context.watch<AuthBloc>() -> Listen to state changes and rebuild UI
+✅ .add() is used to send an event to the BLoC. When an event is added, the BLoC processes it and emits a new state.
+
+ */
 class SignInScreen extends StatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => SignInScreen());
 
@@ -36,6 +45,16 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15.0),
+        /*
+        * The BlocConsumer widget is used to listen to state changes and rebuild the UI based
+         on different authentication states.
+
+        * The listener is used to perform side effects, such as showing a snackbar
+          or navigating to another screen, but not rebuilding the UI.
+
+        * The builder is responsible for building and rebuilding the UI based on different states.
+
+         */
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthFailure) {

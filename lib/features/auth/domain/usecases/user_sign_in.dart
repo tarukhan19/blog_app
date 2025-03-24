@@ -4,9 +4,19 @@ import 'package:fpdart/fpdart.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../repository/auth_repository.dart';
 
+/*
+Use Cases → Contains business logic (e.g., LoginUserUseCase, SignupUsecase).
+
+📌 Purpose: Defines business logic for authentication.
+
+Each use case:
+
+Takes parameters as input.
+Calls the repository interface to fetch/process data.
+Returns an either success (User) or failure.
+ */
 class UserSignIn implements UseCase<User, UserSignInParameters> {
   final AuthRepository authRepository;
-
   UserSignIn(this.authRepository);
 
   @override

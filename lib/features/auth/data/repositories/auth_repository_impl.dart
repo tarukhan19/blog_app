@@ -5,6 +5,19 @@ import 'package:blog_app/features/auth/domain/entity/user.dart';
 import 'package:blog_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
+/*
+Repositories (Implementation) → Actual logic to fetch/store data.
+📌 Purpose:
+
+Implements AuthRepository (Domain Layer).
+Calls AuthRemoteData to fetch authentication data.
+Handles errors using Either<Failure, User> (Functional Programming).
+
+on ServerException catch (e) =>
+Catch only a specific exception	on ServerException { ... }
+Catch any exception	catch (e) { ... }
+Catch a specific exception and access its details
+ */
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteData authRemoteData;
 

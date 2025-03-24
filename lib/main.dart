@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Blogs",
       theme: AppTheme.darkThemeMode,
-      home: const SignInScreen(),
+      home: const SafeArea(child: SignInScreen()),
     );
   }
 }

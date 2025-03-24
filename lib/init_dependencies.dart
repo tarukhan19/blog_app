@@ -15,6 +15,12 @@ It allows to register dependencies and retrieve them anywhere in the app without
 creates a singleton instance of GetIt that will manage all dependencies.
 registerLazySingleton => instance is created only when it is first needed and then reused for the entire app lifecycle.
 registerFactory => It is a method in the get_it package that creates a new instance every time you request it.
+
+=> A fat arrow (=>) is used to define a single expression in a function.
+This is a cleaner way to write functions with a single statement.
+
+.. -> cascade operator(..) in Dart allows you to perform multiple operations on the same object
+ without repeating its name.
  */
 final serviceLocator = GetIt.instance;
 

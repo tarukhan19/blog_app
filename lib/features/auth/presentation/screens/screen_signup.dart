@@ -1,4 +1,3 @@
-import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/screens/screen_signin.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
@@ -7,6 +6,8 @@ import 'package:blog_app/features/auth/presentation/widgets/loader.dart';
 import 'package:blog_app/features/auth/presentation/widgets/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../config/theme/app_pallete.dart';
 
 class SignupScreen extends StatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => SignupScreen());

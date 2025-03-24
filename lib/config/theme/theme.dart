@@ -1,5 +1,6 @@
-import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
+
+import 'app_pallete.dart';
 
 class AppTheme {
 

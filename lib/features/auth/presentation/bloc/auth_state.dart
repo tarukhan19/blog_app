@@ -11,8 +11,6 @@ which means all possible states must be defined within the same file.
 3️⃣ AuthSuccess → Represents a successful authentication with a User object.
 4️⃣ AuthFailure → Represents an authentication failure with an error message.
  */
-
-@immutable
 sealed class AuthState {
   const AuthState();
 }

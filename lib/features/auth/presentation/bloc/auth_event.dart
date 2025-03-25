@@ -7,8 +7,9 @@ AuthEvent class represents different authentication-related user actions (events
 1️⃣ AuthSignUp → Triggered when a user signs up with name, email, and password.
 2️⃣ AuthSignIn → Triggered when a user logs in with email and password.
 
+✅ A sealed class is a special type of class that restricts inheritance to only within the same file.
+  These classes cannot be instantiated because they are meant to be extended only.
  */
-@immutable
 sealed class AuthEvent {}
 
 final class AuthSignUp extends AuthEvent {

@@ -25,6 +25,15 @@ If value is null, it returns defaultValue
 📌 variable ??= value;
 If variable is null, it assigns value to variable.
 If variable is not null, it keeps its original value.
+
+📌 Named parameter ({}) : allow to specify arguments explicitly by name.
+                     parameters are optional by default.
+                     By default, named parameters are optional.
+                     we can make them required using the required keyword.
+
+📌 Positional parameters () : It is passed in order, just like traditional function parameters.
+                          we can use square brackets [] to make parameters optional
+
  */
 class UserModel extends User {
   UserModel({required super.id, required super.name, required super.emailId});

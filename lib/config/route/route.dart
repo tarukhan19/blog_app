@@ -21,7 +21,21 @@ class AppRouter {
           return const MaterialPage(child: SignupScreen());
         },
       ),
+      // GoRoute(
+      //   name: RouteConstant.home,
+      //   path: '/home/:id',
+      //   pageBuilder: (context, state) {
+      //     return MaterialPage(child: HomeScreen(id: state.params[!'id']));
+      //   },
+      // ),
     ],
+    // redirect: (context, state) async {
+    //   bool isAuthenticated = true;
+    //   if (isAuthenticated && state.matchedLocation == '/') {
+    //     return state.namedLocation(RouteConstant.signIn);
+    //   }
+    //   return null;
+    // },
   );
 
   static GoRouter get router => _router;

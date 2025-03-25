@@ -60,6 +60,18 @@ class _SignInScreenState extends State<SignInScreen> {
           listener: (context, state) {
             if (state is AuthFailure) {
               showSnackBar(context, state.message);
+            } else if (state is AuthSuccess) {
+             // Replaces the current screen (doesn’t add to back stack)
+              // context.goNamed(RouteConstant.signUp , pathParameters: {'id' , id})
+
+              // Pushes a new screen (adds to back stack)
+              // context.pushNamed(
+              //   RouteConstant.home,
+              //   pathParameters: {'id': id},
+              // );
+
+              // Replaces the current screen with a new one
+             // context.pushReplacementNamed(RouteConstant.home)
             }
           },
           builder: (context, state) {
@@ -103,7 +115,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
-                     // Navigator.push(context, SignupScreen.route());
+                      // Navigator.push(context, SignupScreen.route());
                       context.pushNamed(RouteConstant.signUp);
                     },
                     child: RichText(

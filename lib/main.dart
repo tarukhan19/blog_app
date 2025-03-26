@@ -4,11 +4,9 @@ import 'package:blog_app/features/auth/presentation/screens/screen_signin.dart';
 import 'package:blog_app/init_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'config/theme/theme.dart';
 
-void main() async {
-  /*
+/*
   The function WidgetsFlutterBinding.ensureInitialized(); is an important part of the Flutter initialization process,
    ensuring that the Flutter framework is properly set up before executing any further code.
 
@@ -23,29 +21,22 @@ void main() async {
    Creates an instance of AuthBloc using serviceLocator.
    serviceLocator<AuthBloc>() fetches the AuthBloc instance from get_it.
    */
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initDependencies();
 
   runApp(
     MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => serviceLocator<AuthBloc>())],
-      child: const MyApp(),
+        providers: [BlocProvider(create: (_) => serviceLocator<AuthBloc>()),],
+        child:  MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: "Blogs",
+          theme: AppTheme.darkThemeMode,
+          routeInformationProvider: AppRouter.router.routeInformationProvider,
+          routeInformationParser: AppRouter.router.routeInformationParser,
+          routerDelegate: AppRouter.router.routerDelegate,
+        ),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: "Blogs",
-      theme: AppTheme.darkThemeMode,
-      routeInformationProvider: AppRouter.router.routeInformationProvider,
-      routeInformationParser: AppRouter.router.routeInformationParser,
-      routerDelegate: AppRouter.router.routerDelegate,
-    );
-  }
 }
